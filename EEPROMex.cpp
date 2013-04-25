@@ -250,13 +250,18 @@ bool EEPROMClassEx::isReadOk(int address)
 {
 #ifdef _EEPROMEX_DEBUG    
 	if (address > _memSize) {
-		Serial.println("Attempt to write outside of EEPROM memory");
+		Serial.println("Attempt to read outside of EEPROM memory");
 		return false;
 	} else {
 		return true;
 	}
 #endif
 	return true;	
+}
+
+int EEPROMClassEx::writtenBytes()
+{
+	return _writeCounts;
 }
 
 int EEPROMClassEx::_base= 0;
